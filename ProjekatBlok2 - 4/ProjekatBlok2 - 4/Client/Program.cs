@@ -142,6 +142,7 @@ namespace Client
             {
                 Thread.CurrentThread.IsBackground = true;
                 List<string> poruke = new List<string>();
+                Dictionary<string, int> Parametri = _konekcijaKorisnik.PreuzmiParametre(_username);
 
                 while (kraj)
                 {
@@ -151,11 +152,11 @@ namespace Client
 
                         if (poruke.Count != 0)
                         {
-                            int vreme = 10;
+                            int vreme = Parametri["Vreme"];
                             Console.WriteLine("-------------------------------------------------------------------------------");
                             Console.WriteLine("--------------------------------UPOZORENJE-------------------------------------");
                             Console.WriteLine("-------------------------------------------------------------------------------");
-                            Console.WriteLine("Imate 10 sekundi da smanjite broj foldera ili txt fajlova u vasem fajl sistemu");
+                            Console.WriteLine("Imate " + Parametri["Vreme"] + " sekundi da smanjite broj foldera ili txt fajlova u vasem fajl sistemu");
 
                             while (vreme != 0)
                             {
@@ -163,7 +164,7 @@ namespace Client
                                 List<string> trenutniFajlSistem = _konekcijaKorisnik.TrenutniSadrzajFajlSistema(_username, "NULL");
 
 
-                                if (trenutniFajlSistem.Count > 5)
+                                if (trenutniFajlSistem.Count > Parametri["MaxBrojFajlova"])
                                 {
                                     vreme--;
 
@@ -859,6 +860,8 @@ namespace Client
                 List<string> crnaLista = new List<string>(); //KORISNICI BAN
 
                 List<string> poruke = new List<string>();
+
+                Dictionary<string, int> Parametri = _konekcijaNadzor.PreuzmiParametre(_username);
                 
             while (kraj)
                 {
@@ -869,7 +872,7 @@ namespace Client
 
                         foreach (KeyValuePair<string, List<string>> item in ceoFajlSistem)
                         {
-                            if (ceoFajlSistem[item.Key].Count > 5 && !sivaLista.Contains(item.Key) && !crnaLista.Contains(item.Key))
+                            if (ceoFajlSistem[item.Key].Count > Parametri["MaxBrojFajlova"] && !sivaLista.Contains(item.Key) && !crnaLista.Contains(item.Key))
                             {
                                 _konekcijaNadzor.SaljiPorukuKorisniku(_username, item.Key, "UPOZORENJE");
                                 Console.WriteLine("----------------------------------------------------------------------------");
@@ -881,7 +884,7 @@ namespace Client
                                 {
                                     Thread.CurrentThread.IsBackground = true;
 
-                                    int vreme = 10;
+                                    int vreme = Parametri["Vreme"];
 
                                     while (vreme > 0)
                                     {
@@ -891,7 +894,7 @@ namespace Client
                                         Dictionary<string, List<string>> trenutniFajlSistem = _konekcijaNadzor.ZatraziListuSvihPutanjaFajlSistema(_username);
 
 
-                                        if (trenutniFajlSistem[item.Key].Count > 5)
+                                        if (trenutniFajlSistem[item.Key].Count > Parametri["MaxBrojFajlova"])
                                         {
 
                                             if (vreme == 0)
@@ -915,7 +918,7 @@ namespace Client
 
                         foreach (string item in sivaLista)
                         {
-                            if (ceoFajlSistem[item].Count < 6)
+                            if (ceoFajlSistem[item].Count <= Parametri["MaxBrojFajlova"])
                             {
                                 _konekcijaNadzor.SaljiPorukuKorisniku(_username, item, "OPROSTENO");
                                 Console.WriteLine("----------------------------------------------------------------------------");

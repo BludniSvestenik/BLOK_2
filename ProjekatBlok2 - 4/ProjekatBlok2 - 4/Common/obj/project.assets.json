@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\GitHub\\BLOK_2\\ProjekatBlok2 - 4\\ProjekatBlok2 - 4\\Common\\Common.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\ProjekatBlok2 - 4\\ProjekatBlok2 - 4\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "C:\\Users\\Administrator\\Documents\\GitHub\\BLOK_2\\ProjekatBlok2 - 4\\ProjekatBlok2 - 4\\Common\\Common.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\ProjekatBlok2 - 4\\ProjekatBlok2 - 4\\Common\\Common.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Documents\\GitHub\\BLOK_2\\ProjekatBlok2 - 4\\ProjekatBlok2 - 4\\Common\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\ProjekatBlok2 - 4\\ProjekatBlok2 - 4\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

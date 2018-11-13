@@ -27,5 +27,9 @@ namespace Common
         [OperationContract]
         [FaultContract(typeof(MyException))]
         void LogOut(string username);
+
+        [OperationContract]
+        [FaultContract(typeof(MyException))]
+        Dictionary<string, int> PreuzmiParametre(string username);
     }
 }

@@ -135,6 +135,27 @@ namespace Server
             }
         }
 
+
+        public Dictionary<string, int> PreuzmiParametre(string username)
+        {
+            string uloga = Autorizacija(username);
+
+            if (uloga == "Nadzor")
+            {
+
+                return Parametri;
+            }
+            else
+            {
+                MyException e = new MyException
+                {
+                    Greska = "Niste autorizovani kao nadzor!"
+                };
+
+                throw new FaultException<MyException>(e);
+            }
+        }
+
         #region Log
         private void ActionLogs(string actionDone)
         {
@@ -166,6 +187,8 @@ namespace Server
 
             return uloga;
         }
+
+        
         #endregion
     }
 }

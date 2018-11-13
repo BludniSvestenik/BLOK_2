@@ -37,6 +37,17 @@ namespace Server
             BazaPoruka.Add(korisnik3.Username, new List<string>());
             BazaPoruka.Add(admin.Username, new List<string>());
 
+            Parametri.Add("MaxBrojFajlova", 0);
+            Parametri.Add("Vreme", 0);
+
+            if (System.IO.File.Exists("Parametri.txt"))
+            {
+                string[] lines = System.IO.File.ReadAllLines("Parametri.txt");
+
+                
+                Parametri["MaxBrojFajlova"] = Int32.Parse(lines[0]);
+                Parametri["Vreme"] = Int32.Parse(lines[1]);
+            }
 
             List<IAuthorizationPolicy> policies = new List<IAuthorizationPolicy>();
             policies.Add(new MyAuthorizationPolicy());

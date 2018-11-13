@@ -16,5 +16,7 @@ namespace Server
         public static Dictionary<string, List<string>> BazaFajlSistema = new Dictionary<string, List<string>>();
 
         public static Dictionary<string, List<string>> BazaPoruka = new Dictionary<string, List<string>>();
+
+        public static Dictionary<string, int> Parametri = new Dictionary<string, int>();
     }
 }
