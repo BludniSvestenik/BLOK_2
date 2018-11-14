@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Server
@@ -40,25 +41,35 @@ namespace Server
 
         public void SaljiPorukuKorisniku(string username, string usernameKorisnik, string poruka)
         {
+            Thread.Sleep(200);
+
             string uloga = Autorizacija(username);
+
+            object x = new object();
 
             if (uloga == "Nadzor")
             {
-                if(poruka == "UPOZORENJE")
+
+                lock(x)
                 {
-                    BazaPoruka[usernameKorisnik].Add(poruka);
-                    ActionLogs("Nadzor " + username + " je poslao poruku korisniku " + usernameKorisnik + " tipa UPOZORENJE");
+                    if (poruka == "UPOZORENJE")
+                    {
+                        BazaPoruka[usernameKorisnik].Add(poruka);
+                        ActionLogs("Nadzor " + username + " je poslao poruku korisniku " + usernameKorisnik + " tipa UPOZORENJE");
+                    }
+                    else if (poruka == "OPROSTENO")
+                    {
+                        BazaPoruka[usernameKorisnik].RemoveAll(item => item == "UPOZORENJE");
+                        ActionLogs("Nadzor " + username + " je poslao poruku korisniku " + usernameKorisnik + " tipa OPROSTENO");
+                    }
+                    else if (poruka == "BAN")
+                    {
+                        BazaPoruka[usernameKorisnik].Add(poruka);
+                        ActionLogs("Nadzor " + username + " je poslao poruku korisniku " + usernameKorisnik + " tipa BAN");
+                    }
                 }
-                else if(poruka == "OPROSTENO")
-                {
-                    BazaPoruka[usernameKorisnik].RemoveAll(item => item == "UPOZORENJE");
-                    ActionLogs("Nadzor " + username + " je poslao poruku korisniku " + usernameKorisnik + " tipa OPROSTENO");
-                }
-                else if(poruka == "BAN")
-                {
-                    BazaPoruka[usernameKorisnik].Add(poruka);
-                    ActionLogs("Nadzor " + username + " je poslao poruku korisniku " + usernameKorisnik + " tipa BAN");
-                }
+
+                
 
             }
             else

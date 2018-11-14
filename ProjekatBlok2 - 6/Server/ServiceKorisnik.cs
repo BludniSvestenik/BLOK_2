@@ -270,8 +270,10 @@ namespace Server
                         throw new FaultException<MyException>(e);
                     }
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
+                    
+
                     MyException ex = new MyException
                     {
                         Greska = "Niste autorizovani kao Korisnik!"
@@ -402,7 +404,7 @@ namespace Server
                         throw new FaultException<MyException>(e);
                     }
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     MyException ex = new MyException
                     {
@@ -546,7 +548,7 @@ namespace Server
                         throw new FaultException<MyException>(e);
                     }
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     MyException ex = new MyException
                     {
@@ -683,7 +685,7 @@ namespace Server
                         throw new FaultException<MyException>(e);
                     }
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     MyException ex = new MyException
                     {
@@ -812,7 +814,7 @@ namespace Server
                         throw new FaultException<MyException>(e);
                     }
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     MyException ex = new MyException
                     {
@@ -952,7 +954,7 @@ namespace Server
                         throw new FaultException<MyException>(e);
                     }
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     MyException ex = new MyException
                     {

@@ -862,8 +862,10 @@ namespace Client
                 List<string> poruke = new List<string>();
 
                 Dictionary<string, int> Parametri = _konekcijaNadzor.PreuzmiParametre(_username);
-                
-            while (kraj)
+
+                object x = new object();
+
+                while (kraj)
                 {
 
                     try
@@ -880,37 +882,42 @@ namespace Client
                                 Console.WriteLine("----------------------------------------------------------------------------");
                                 sivaLista.Add(item.Key);
 
-                                new Thread(() =>
+                                lock (x)
                                 {
-                                    Thread.CurrentThread.IsBackground = true;
-
-                                    int vreme = Parametri["Vreme"];
-
-                                    while (vreme > 0)
+                                    new Thread(() =>
                                     {
-                                        Thread.Sleep(1000);
-                                        vreme--;
+                                        Thread.CurrentThread.IsBackground = true;
 
-                                        Dictionary<string, List<string>> trenutniFajlSistem = _konekcijaNadzor.ZatraziListuSvihPutanjaFajlSistema(_username);
+                                        int vreme = Parametri["Vreme"];
 
-
-                                        if (trenutniFajlSistem[item.Key].Count > Parametri["MaxBrojFajlova"])
+                                        while (vreme > 0)
                                         {
+                                            Thread.Sleep(1000);
+                                            vreme--;
 
-                                            if (vreme == 0)
+                                            Dictionary<string, List<string>> trenutniFajlSistem = _konekcijaNadzor.ZatraziListuSvihPutanjaFajlSistema(_username);
+
+
+                                            if (trenutniFajlSistem[item.Key].Count > Parametri["MaxBrojFajlova"])
                                             {
-                                                _konekcijaNadzor.SaljiPorukuKorisniku(_username, item.Key, "BAN");
-                                                
+
+                                                if (vreme == 0)
+                                                {
+                                                    _konekcijaNadzor.SaljiPorukuKorisniku(_username, item.Key, "BAN");
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                break;
                                             }
                                         }
-                                        else
-                                        {
-                                            break;
-                                        }
-                                    }
 
 
-                                }).Start();
+                                    }).Start();
+                                }
+
+                                
                             }
                         }
 

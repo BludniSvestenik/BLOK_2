@@ -111,3 +111,6 @@ C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\ProjekatBlok2 - 4\Client\obj\De
 C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\ProjekatBlok2 - 4\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\ProjekatBlok2 - 4\Client\obj\Debug\Client.exe
 C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\ProjekatBlok2 - 4\Client\obj\Debug\Client.pdb
+C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\Client\bin\Debug\Client.exe
+C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\Client\bin\Debug\System.Net.Http.dll
+C:\Users\Administrator\Desktop\ProjekatBlok2 - 6\Client\bin\Debug\Common.dll
