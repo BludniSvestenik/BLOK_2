@@ -1,6 +1,0 @@
-C:\Users\Administrator\Desktop\ProjekatBlok2 - 3\Client\bin\Debug\Client.exe
-C:\Users\Administrator\Desktop\ProjekatBlok2 - 3\Client\bin\Debug\System.Net.Http.dll
-C:\Users\Administrator\Desktop\ProjekatBlok2 - 3\Client\bin\Debug\Common.dll
-C:\Users\Administrator\Desktop\ProjekatBlok2 - 4\ProjekatBlok2 - 4\Client\bin\Debug\Client.exe
-C:\Users\Administrator\Desktop\ProjekatBlok2 - 4\ProjekatBlok2 - 4\Client\bin\Debug\System.Net.Http.dll
-C:\Users\Administrator\Desktop\ProjekatBlok2 - 4\ProjekatBlok2 - 4\Client\bin\Debug\Common.dll
